@@ -4,6 +4,7 @@ This repository contains data and code in order to reproduce the results from th
 # Data
 ## Twitter dataset
 Twitter data related to this study can be found [here](https://zenodo.org/record/4267033#.X6sgdpNKi50).
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4267033.svg)](https://doi.org/10.5281/zenodo.4267033)
 
 ## Aggregated data
