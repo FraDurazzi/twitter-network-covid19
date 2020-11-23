@@ -24,6 +24,10 @@ cd fig4
 python fig4e.py
 ```
 This generates a new figure png and pdf in a subfolder `./plots/fig4e/`.
+Expected runtime is few seconds for all the scripts generating figures. 
+
+## Notebooks
+In the IPython's notebooks we show how we analyzed the data starting from the raw data. Please, refer to `notebooks/README.md` for the details.
 
 # References
 ## Categories
