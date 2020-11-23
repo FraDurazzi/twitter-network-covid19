@@ -8,3 +8,4 @@ tqdm==4.46.1
 networkx
 pyarrow
 fa2
+joblib

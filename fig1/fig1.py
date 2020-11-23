@@ -35,7 +35,9 @@ for com in comtodraw:
 com2col['XX']='grey'
 
 #Load dataframe with positions computed with Gephi
-df_nodes=pd.read_parquet('../data/fig1/df_gephi_positions.parquet')
+path_parent = os.path.dirname(os.getcwd())
+os.chdir(path_parent)
+df_nodes=pd.read_parquet('data/fig1/df_gephi_positions.parquet',engine='pyarrow')
 
 colori=[com2col[com] for com in df_nodes.community]
 s_t=time.time()
@@ -48,7 +50,7 @@ plt.legend(markers, scritte, numpoints=1,loc=(.95,.3),#'upper right',
           fontsize=16)
 plt.axis('off')
 
-plt.savefig('fig1.png', bbox_inches='tight')
+plt.savefig('fig1/fig1.png', bbox_inches='tight')
 # Saving to .pdf would be too heavy
 
 e_t=time.time()-s_t
