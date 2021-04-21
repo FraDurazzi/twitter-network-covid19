@@ -11,7 +11,13 @@ from collections import defaultdict
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib
 import pickle
+
+new_rc_params = {'text.usetex': False,
+"svg.fonttype": 'none'
+}
+matplotlib.rcParams.update(new_rc_params)
 
 DATA_DIR = os.path.join('..', 'data', 'fig4')
 logger = logging.getLogger(__name__)
@@ -79,7 +85,7 @@ def main():
     sns.despine()
     fig.tight_layout()
 
-    save_fig(fig, 'fig4cd', 1, dpi=600, plot_formats=['png', 'pdf'])
+    save_fig(fig, 'fig4cd', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 if __name__ == "__main__":
     main()

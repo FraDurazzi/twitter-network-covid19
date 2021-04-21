@@ -2,6 +2,7 @@ import networkx as nx
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import re
 import pickle
 import time
@@ -11,6 +12,11 @@ import os
 import datetime as dt
 import glob
 from tqdm import tqdm
+
+new_rc_params = {'text.usetex': False,
+"svg.fonttype": 'none'
+}
+mpl.rcParams.update(new_rc_params)
 
 alphab=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
         'R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG']

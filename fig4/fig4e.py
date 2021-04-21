@@ -12,6 +12,11 @@ import matplotlib
 import glob
 import numpy as np
 
+new_rc_params = {'text.usetex': False,
+"svg.fonttype": 'none'
+}
+matplotlib.rcParams.update(new_rc_params)
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)-5.5s] [%(name)-12.12s]: %(message)s')
 
@@ -65,7 +70,8 @@ def main():
     palette = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
     color_dict = {'International expert': palette[4], 'National elite': palette[1], 'Political': palette[2], 'Other': '.5'}
 
-    fig, axes = plt.subplots(1, 4, figsize=(6, 2), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(4, 4), sharex=True, sharey=True)
+    axes=axes.flatten()
 
     min_date = df.centroid_day.min()
     for ax, col in zip(axes, color_dict.keys()):
@@ -109,11 +115,12 @@ def main():
         ax.set_aspect('equal')
         plt.locator_params(axis='y', nbins=3)
 
-    axes[0].set_ylabel('Avg. rank retweets $r_{rt}$')
+    #axes[0].set_ylabel('Avg. rank retweets $r_{rt}$')
+    fig.text(0.04, 0.51, r'Avg. rank retweets $r_{rt}$', va='center', rotation='vertical', fontsize=7)
     fig.text(0.5, 0.15, r'Avg. rank $h$-index $r_{h}$', ha='center', va='top', fontsize=7)
     fig.subplots_adjust(wspace=.07)
 
-    save_fig(fig, 'fig4e', 1, dpi=600, plot_formats=['png', 'pdf'])
+    save_fig(fig, 'fig4e', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 
 if __name__ == "__main__":

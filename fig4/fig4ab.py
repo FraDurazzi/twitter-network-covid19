@@ -11,6 +11,11 @@ import matplotlib.dates as mdates
 import matplotlib
 import numpy as np
 
+new_rc_params = {'text.usetex': False,
+"svg.fonttype": 'none'
+}
+matplotlib.rcParams.update(new_rc_params)
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)-5.5s] [%(name)-12.12s]: %(message)s')
 
@@ -81,7 +86,7 @@ def fig4a():
     g.ax_joint.xaxis.set_major_locator(plt.MaxNLocator(num_ticks))
     g.ax_joint.yaxis.set_major_locator(plt.MaxNLocator(num_ticks))
 
-    save_fig(g, 'fig4a', 1, dpi=600, plot_formats=['png', 'pdf'])
+    save_fig(g, 'fig4a', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 def bootstrap_ci(df, cols, n_iterations=1000, sample_frac=.1, agg='mean', alpha=.95):
     statistics = []
@@ -143,7 +148,7 @@ def fig4b():
     arrow_props = dict(fc='.15', shrink=.1, width=.15, headwidth=2, headlength=2)
     ax.annotate('', xy=(center-len_arr, center+len_arr), xytext=(center, center), ha='left', va='top', arrowprops=arrow_props)
     ax.annotate('', xy=(center+len_arr, center-len_arr), xytext=(center, center), ha='left', va='top', arrowprops=arrow_props)
-    ax.text(center+len_arr, center-len_arr, 'Over-ranked\nby retweets\n(high virality)', ha='right', va='bottom', fontsize=6)
+    ax.text(center+len_arr-200, center-len_arr, 'Over-ranked\nby retweets\n(high virality)', ha='right', va='bottom', fontsize=6)
     ax.text(center-len_arr, center+len_arr, 'Under-ranked\nby retweets\n(low virality)', ha='left', va='top', fontsize=6)
 
     # axis labels
@@ -156,9 +161,9 @@ def fig4b():
     # diagonal line
     ax.plot([0, num_ranks], [0, num_ranks], color='0.15', ls='dashed', lw=.5, zorder=0)
 
-    save_fig(fig, 'fig4b', 1, dpi=600, plot_formats=['png', 'pdf'])
+    save_fig(fig, 'fig4b', 2, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 
 if __name__ == "__main__":
-    # fig4a()
+    fig4a()
     fig4b()
