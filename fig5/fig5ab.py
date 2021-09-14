@@ -19,22 +19,22 @@ matplotlib.rcParams.update(new_rc_params)
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)-5.5s] [%(name)-12.12s]: %(message)s')
 
-DATA_DIR = os.path.join('..', 'data', 'fig4')
+DATA_DIR = os.path.join('..', 'data', 'fig5')
 
 community_to_types = {
         'A': 'Other',
-        'B': 'International expert',
+        'B': 'International sci-health',
         'C': 'Political',
-        'D': 'National expert',
+        'D': 'National elite',
         'E': 'Other',
         'F': 'Political',
-        'G': 'International expert',
+        'G': 'International sci-health',
         'H': 'Political',
-        'I': 'National expert',
-        'J': 'National expert',
+        'I': 'National elite',
+        'J': 'National elite',
         'K': 'Political',
         'L': 'Political',
-        'M': 'National expert',
+        'M': 'National elite',
         'N': 'Other',
         'O': 'Other'}
 
@@ -50,7 +50,7 @@ def read_data(overwrite=False):
 def fig4a():
     do_log = False
     palette = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
-    color_dict = {'International expert': palette[4], 'National expert': palette[1], 'Political': palette[2], 'Other': '.5'}
+    color_dict = {'International sci-health': palette[4], 'National elite': palette[1], 'Political': palette[2], 'Other': '.5'}
     df = read_data(overwrite=False)
 
     g = sns.jointplot(data=df, kind='scatter', x='h_index_rank', y='num_retweets_rank', alpha=.8, s=4, ec=None, hue='super_community', palette=color_dict.values(), hue_order=color_dict.keys(), height=2, marginal_ticks=False, space=.1)
@@ -86,7 +86,7 @@ def fig4a():
     g.ax_joint.xaxis.set_major_locator(plt.MaxNLocator(num_ticks))
     g.ax_joint.yaxis.set_major_locator(plt.MaxNLocator(num_ticks))
 
-    save_fig(g, 'fig4a', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
+    save_fig(g, 'fig5a', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 def bootstrap_ci(df, cols, n_iterations=1000, sample_frac=.1, agg='mean', alpha=.95):
     statistics = []
@@ -121,7 +121,7 @@ def compute_ci_new(df, n_iterations=10, alpha=.95):
 @plot
 def fig4b():
     palette = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
-    color_dict = {'International expert': palette[4], 'National expert': palette[1], 'Political': palette[2], 'Other': '.5'}
+    color_dict = {'International sci-health': palette[4], 'National elite': palette[1], 'Political': palette[2], 'Other': '.5'}
     df = read_data()
     fig, ax = plt.subplots(1, 1, figsize=(2, 2), sharex=False, sharey=False)
 
@@ -161,7 +161,7 @@ def fig4b():
     # diagonal line
     ax.plot([0, num_ranks], [0, num_ranks], color='0.15', ls='dashed', lw=.5, zorder=0)
 
-    save_fig(fig, 'fig4b', 2, dpi=600, plot_formats=['png', 'pdf','svg'])
+    save_fig(fig, 'fig5b', 2, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 
 if __name__ == "__main__":

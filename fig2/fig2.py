@@ -36,12 +36,12 @@ nicer_category_names = {
 
 community_to_types = {
         'A': 'Other',
-        'B': 'International expert',
+        'B': 'International sci-health',
         'C': 'Political',
         'D': 'National elites',
         'E': 'Other',
         'F': 'Political',
-        'G': 'International expert',
+        'G': 'International sci-health',
         'H': 'Political',
         'I': 'National elites',
         'J': 'National elites',
@@ -97,7 +97,7 @@ def main():
     # cmap = 'Reds'
 
     palette = [c['color'] for c in matplotlib.rcParams['axes.prop_cycle']]
-    colors = {'International expert': palette[4], 'National elites': palette[1], 'Political': palette[2], 'Other': '.5'}
+    colors = {'International sci-health': palette[4], 'National elites': palette[1], 'Political': palette[2], 'Other': '.5'}
     #df.index.name = 'communities'
     super_communities = [community_to_types[com] for com in df.index] #df.reset_index().communities.apply(lambda s: community_to_types[s]).copy()
     super_community_colors = [colors[sc] for sc in super_communities]#super_communities.apply(lambda s: colors[s])

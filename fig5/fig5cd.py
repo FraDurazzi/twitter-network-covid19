@@ -19,25 +19,25 @@ new_rc_params = {'text.usetex': False,
 }
 matplotlib.rcParams.update(new_rc_params)
 
-DATA_DIR = os.path.join('..', 'data', 'fig4')
+DATA_DIR = os.path.join('..', 'data', 'fig5')
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)-5.5s] [%(name)-12.12s]: %(message)s')
 
 
 community_to_types = {
         'A': 'Other',
-        'B': 'International expert',
+        'B': 'International sci-health',
         'C': 'Political',
-        'D': 'National expert',
+        'D': 'National elite',
         'E': 'Other',
         'F': 'Political',
-        'G': 'International expert',
+        'G': 'International sci-health',
         'H': 'Political',
-        'I': 'National expert',
-        'J': 'National expert',
+        'I': 'National elite',
+        'J': 'National elite',
         'K': 'Political',
         'L': 'Political',
-        'M': 'National expert',
+        'M': 'National elite',
         'N': 'Other',
         'O': 'Other'}
 
@@ -55,7 +55,7 @@ def main():
         df.loc[grp.index, 'num_retweets'] = grp.num_retweets.rank(method='first', ascending=False)
     df = df.groupby(['centroid_day', 'super_community']).mean().reset_index()
     palette = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
-    color_dict = {'International expert': palette[4], 'National expert': palette[1], 'Political': palette[2], 'Other': '.5'}
+    color_dict = {'International sci-health': palette[4], 'National elite': palette[1], 'Political': palette[2], 'Other': '.5'}
 
     fig, axes = plt.subplots(1, 2, figsize=(3.3, 1.4))
 
@@ -85,7 +85,7 @@ def main():
     sns.despine()
     fig.tight_layout()
 
-    save_fig(fig, 'fig4cd', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
+    save_fig(fig, 'fig5cd', 1, dpi=600, plot_formats=['png', 'pdf','svg'])
 
 if __name__ == "__main__":
     main()

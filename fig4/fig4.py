@@ -13,22 +13,22 @@ import matplotlib
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)-5.5s] [%(name)-12.12s]: %(message)s')
 
-DATA_DIR = os.path.join('..', 'data', 'fig3')
+DATA_DIR = os.path.join('..', 'data', 'fig4')
 
 community_to_types = {
         'A': 'Other',
-        'B': 'International expert',
+        'B': 'International sci-health',
         'C': 'Political',
-        'D': 'National expert',
+        'D': 'National elite',
         'E': 'Other',
         'F': 'Political',
-        'G': 'International expert',
+        'G': 'International sci-health',
         'H': 'Political',
-        'I': 'National expert',
-        'J': 'National expert',
+        'I': 'National elite',
+        'J': 'National elite',
         'K': 'Political',
         'L': 'Political',
-        'M': 'National expert',
+        'M': 'National elite',
         'N': 'Other',
         'O': 'Other'}
 
@@ -94,13 +94,13 @@ def main():
         df['Total'] = df.sum(axis=1)
         dfs[_type] = df
 
-    col_order = ['Total', 'International expert', 'National expert', 'Political', 'Other']
+    col_order = ['Total', 'International sci-health', 'National elite', 'Political', 'Other']
     palette = [c['color'] for c in matplotlib.rcParams['axes.prop_cycle']]
     # orange, blue,
-    color_dict = {'International expert': palette[4], 'National expert': palette[1], 'Political': palette[2], 'Other': '.5', 'Total': '0.15'}
-    ls_dict = {'International expert': '-', 'National expert': '-', 'Political': '-', 'Other': '-', 'Total': 'dotted'}
-    m_dict = {'International expert': '.', 'National expert': '.', 'Political': '.', 'Other': '.', 'Total': None}
-    z_order = {'International expert': 4, 'National expert': 3, 'Political': 2, 'Other': 1,  'Total': 0}
+    color_dict = {'International sci-health': palette[4], 'National elite': palette[1], 'Political': palette[2], 'Other': '.5', 'Total': '0.15'}
+    ls_dict = {'International sci-health': '-', 'National elite': '-', 'Political': '-', 'Other': '-', 'Total': 'dotted'}
+    m_dict = {'International sci-health': '.', 'National elite': '.', 'Political': '.', 'Other': '.', 'Total': None}
+    z_order = {'International sci-health': 4, 'National elite': 3, 'Political': 2, 'Other': 1,  'Total': 0}
     colors = [color_dict[c] for c in col_order]
     col_order_rev = col_order[::-1]
     colors_rev = [color_dict[c] for c in col_order_rev]
@@ -176,7 +176,7 @@ def main():
     sns.despine()
     fig.tight_layout()
     fig.subplots_adjust(hspace=.5)
-    save_fig(plt.gcf(), 'fig3', 1, dpi=600, plot_formats=['png', 'pdf'])
+    save_fig(plt.gcf(), 'fig4', 1, dpi=600, plot_formats=['png', 'pdf'])
 
 if __name__ == "__main__":
     main()
